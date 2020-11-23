@@ -65,7 +65,7 @@ fi
 
 # Determine $BRIDGE_SERVER_IF
 STPSTAT="$(brctl showstp $BRIDGE_IF | grep -vE '(^ |^$)')"
-MACSTAT="$(brctl showmacs $BRIDGE_IF | grep "$SERVER_MAC")"
+MACSTAT="$(brctl showmacs $BRIDGE_IF | grep -i "$SERVER_MAC")"
 
 if [ "$(echo "$STPSTAT" | head -1)" != "$BRIDGE_IF" ]; then
 	fail "Unexpected output from 'brctl showstp'"
